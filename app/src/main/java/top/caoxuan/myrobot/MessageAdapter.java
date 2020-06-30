@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
@@ -27,6 +28,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         ImageView leftAvatar;
         TextView leftAlias;
 
+        TextView timestamp;
+
         ConstraintLayout rightLayout;
         TextView rightMsg;
         ImageView rightAvatar;
@@ -38,6 +41,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             leftMsg = itemView.findViewById(R.id.left_msg);
             leftAvatar = itemView.findViewById(R.id.left_avatar);
             leftAlias = itemView.findViewById(R.id.left_alias);
+
+            timestamp = itemView.findViewById(R.id.timestamp);
 
             rightLayout = itemView.findViewById(R.id.right_layout);
             rightMsg = itemView.findViewById(R.id.right_msg);
@@ -56,6 +61,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.timestamp.setText(new SimpleDateFormat().format(System.currentTimeMillis()));
         Message message = messageList.get(position);
         if ("ROBOT".equals(message.getFrom())) {
             holder.rightLayout.setVisibility(View.GONE);
@@ -65,8 +71,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             holder.leftLayout.setVisibility(View.GONE);
             holder.rightLayout.setVisibility(View.VISIBLE);
             holder.rightMsg.setText(message.getContent());
-            ///holder.rightNickname.setText(pref.getString("Nickname", ""));
-
         }
     }
 

@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     message.setContent(result.toString());
                 } else {
                     Log.e("CX", "没有匹配到相应的结果");
+                    message.setContent("听不懂");
                 }
             } else {
-                message = new Message("ROBOT", resultString);
+                message.setContent(resultString);
             }
             draw(message);
         }
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initMessageList() {
         messageList = new ArrayList<>();
+        messageList.add(new Message("ROBOT", "您好，茉莉为您服务！"));
     }
 
     @Override
