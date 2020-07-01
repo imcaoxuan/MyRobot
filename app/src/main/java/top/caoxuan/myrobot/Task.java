@@ -12,11 +12,11 @@ import okhttp3.Response;
 
 public class Task extends AsyncTask<Object, Integer, Object> {
 
-    public final static String URL = "http://i.itpk.cn/api.php";
-    public final static String API_KEY = "30b9d42d3b04a20b6805f9e9104f63ec";
-    public final static String API_SECRET = "uv5gmxahqtqy";
-    public final static String LIMIT = "";
-    public final static String TYPE = "";
+    public static final String URL = "http://i.itpk.cn/api.php";
+    public static final String API_KEY = "30b9d42d3b04a20b6805f9e9104f63ec";
+    public static final String API_SECRET = "uv5gmxahqtqy";
+    public static final String LIMIT = "";
+    public static final String TYPE = "";
 
     private Listener listener;
     private Message message;
